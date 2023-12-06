@@ -22,7 +22,7 @@
 
     <link th:href="@{/css/style.css}" rel="stylesheet" />
 
-    <title>民宿一覧</title>
+    <title>英単語一覧</title>
   </head>
   <body>
     <div class="samuraitravel-wrapper">
@@ -70,7 +70,7 @@
                   <tr th:each="word : ${word}">
                     <td th:text="${word.getId()}"></td>
                     <td th:text="${word.getWord()}"></td>
-                    <td th:text="${word.getSchooolyear()}"></td>
+                    <td th:text="${word.getSchoolyear()}"></td>
                     <td th:text="${word.getUnit()}"></td>
                     <td th:text="${word.getMean()}"></td>
                     <td><a href="#">詳細</a></td>
