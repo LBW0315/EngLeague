@@ -67,7 +67,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr th:each="word : ${word}">
+                  <tr th:each="word : ${wordPage}">
                     <td th:text="${word.getId()}"></td>
                     <td th:text="${word.getWord()}"></td>
                     <td th:text="${word.getSchoolyear()}"></td>
@@ -77,6 +77,26 @@
                   </tr>
                 </tbody>
               </table>
+              
+              <!-- ページネーション -->
+                             <div th:if="${wordPage.getTotalPages() > 1}" class="d-flex justify-content-center">
+                                 <nav aria-label="民宿一覧ページ">
+                                     <ul class="pagination">
+                                         <li class="page-item">
+                                             <span th:if="${wordPage.isFirst()}" class="page-link disabled">前</span>
+                                             <a th:unless="${wordPage.isFirst()}" th:href="@{/admin/words(page = ${wordPage.getNumber() - 1})}" class="page-link samuraitravel-page-link">前</a>
+                                         </li>
+                                         <li th:each="i : ${#numbers.sequence(0, wordPage.getTotalPages() - 1)}" class="page-item">
+                                             <span th:if="${i == wordPage.getNumber()}" class="page-link active samuraitravel-active" th:text="${i + 1}"></span>
+                                             <a th:unless="${i == wordPage.getNumber()}" th:href="@{/admin/word(page = ${i})}" class="page-link samuraitravel-page-link" th:text="${i + 1}"></a>
+                                         </li>
+                                         <li class="page-item">                        
+                                             <span th:if="${wordPage.isLast()}" class="page-link disabled">次</span>
+                                             <a th:unless="${wordPage.isLast()}" th:href="@{/admin/word(page = ${wordPage.getNumber() + 1})}" class="page-link samuraitravel-page-link">次</a>
+                                         </li>
+                                     </ul>
+                                 </nav> 
+                             </div> 
             </div>
           </div>
         </div>
