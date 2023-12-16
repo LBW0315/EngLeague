@@ -44,7 +44,9 @@ public class AdminWordController {
         model.addAttribute("unit", unit);
         
         return "admin/word/index";
-    }  
+    } 
+	
+	
 
 	
 
